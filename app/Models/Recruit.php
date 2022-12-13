@@ -14,4 +14,15 @@ class Recruit extends Model
         // updated_atで降順に並べたあと、limitで件数制限をかける
         return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
+    protected $fillable = [
+    'game_title',
+    'recruitment_type',
+    'playstyle',
+    'body'
+    ];
+    
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

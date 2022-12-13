@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        ヘッダー名
+        投稿フォーム
     </x-slot>
     <!DOCTYPE html>
     <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -11,19 +11,29 @@
             <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         </head>
         <body>
-            <h1>募集一覧</h1>
-            <div class='recruits'>
-                @foreach ($recruits as $recruit)
-                    <div class='recruitment'>
-                        <h2 class='user'>{{ $recruit->user_id}}</h2>
-                        <p class='playstyle'>{{ $recruit->playstyle }}</p>
-                        <p class='body'>{{ $recruit->body }}</p>
-                        <p class='date'>{{ $recruit->created_at}}</p>
-                    </div>
-                @endforeach
-            </div>
-            <div class='paginate'>
-                {{ $recruits->links() }}
+            <h1>募集</h1>
+            <form action="/recruits" method="POST">
+                @csrf
+                <div class="title">
+                    <h2>ゲーム名</h2>
+                    <input type="text" name="recruit[game_title]" placeholder="ゲーム名"/>
+                </div>
+                <div class="type">
+                    <h2>募集タイプ</h2>
+                    <input type="text" name="recruit[recruitment_type]" placeholder="募集タイプ"/>
+                </div>
+                <div class="style">
+                    <h2>プレイスタイル</h2>
+                    <input type="text" name="recruit[playstyle]" placeholder="プレイスタイル"/>
+                </div>
+                <div class="body">
+                    <h2>募集テキスト</h2>
+                    <textarea name="recruit[body]" placeholder="募集内容を入力"></textarea>
+                </div>
+                <input type="submit" value="投稿する"/>
+            </form>
+            <div class="footer">
+                <a href="/">戻る</a>
             </div>
         </body>
     </html>

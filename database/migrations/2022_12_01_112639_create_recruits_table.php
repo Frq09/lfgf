@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('game_id')->constrained();
+            $table->string('game_title');
             $table->string('recruitment_type');
             $table->string('playstyle');
             $table->string('body');

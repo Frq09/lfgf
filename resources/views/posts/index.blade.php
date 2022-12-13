@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        ヘッダー名
+        募集一覧
     </x-slot>
     <!DOCTYPE html>
     <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -11,14 +11,15 @@
             <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         </head>
         <body>
-            <h1>募集一覧</h1>
+            <a href='/posts/recruit'>募集を作成する</a>
             <div class='recruits'>
                 @foreach ($recruits as $recruit)
                     <div class='recruitment'>
-                        <h2 class='user'>{{ $recruit->user_id}}</h2>
-                        <p class='playstyle'>{{ $recruit->playstyle }}</p>
-                        <p class='body'>{{ $recruit->body }}</p>
-                        <p class='date'>{{ $recruit->created_at}}</p>
+                        <h2 class='user'>ユーザーID : {{ $recruit->user_id}}</h2>
+                        <p class='playstyle'>プレイスタイル : {{ $recruit->playstyle }}</p>
+                        <p class='body'>投稿文 : {{ $recruit->body }}</p>
+                        <p class='date'>投稿日時 : {{ $recruit->created_at}}</p>
+                        <a href='/posts/{{ $recruit->id }}'>この募集の詳細を見る</a>
                     </div>
                 @endforeach
             </div>
