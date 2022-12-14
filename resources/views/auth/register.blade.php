@@ -46,10 +46,17 @@
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
             
+            <!-- Profile_image -->
+            <div>
+                <x-input-label for="profile_image" :value="__('Profile_image')" />
+                <x-text-input id="profile_image" class="block mt-1 w-full" type="file" name="profile_image" accept="image/png, image/jpeg" :value="old('profile_image')" required autofocus />
+                <x-input-error :messages="$errors->get('profile_image')" class="mt-2" />
+            </div>
+            
             <!-- Age -->
             <div>
                 <x-input-label for="age" :value="__('Age')" />
-                <x-text-input id="age" class="block mt-1 w-full" type="text" name="age" :value="old('age')" required autofocus />
+                <x-text-input id="age" class="block mt-1 w-full" type="number" name="age" :value="old('age')" required autofocus />
                 <x-input-error :messages="$errors->get('age')" class="mt-2" />
             </div>
             

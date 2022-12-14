@@ -16,15 +16,28 @@
                 @csrf
                 <div class="title">
                     <h2>ゲーム名</h2>
-                    <input type="text" name="recruit[game_title]" placeholder="ゲーム名"/>
+                    <select name="recruit[game_title]">
+                        <option value="VALORANT">VALORANT</option>
+                        <option value="APEX LEGENDS">APEX LEGENDS</option>
+                        <option value="OVERWATCH2">OVERWATCH2</option>
+                        <option value="COD WorZone2.0">COD WorZone2.0</option>
+                        <option value="r6s">レインボーシックスシージ</option>
+                    </select>
                 </div>
                 <div class="type">
                     <h2>募集タイプ</h2>
-                    <input type="text" name="recruit[recruitment_type]" placeholder="募集タイプ"/>
+                    <select name="recruit[recruitment_type]">
+                        <option value="フレンド募集">フレンド募集</option>
+                        <option value="カスタムマッチ募集">カスタムマッチ募集</option>
+                        <option value="コーチング募集">コーチング募集</option>
+                    </select>
                 </div>
                 <div class="style">
                     <h2>プレイスタイル</h2>
-                    <input type="text" name="recruit[playstyle]" placeholder="プレイスタイル"/>
+                    <select name="recruit[playstyle]">
+                        <option value="エンジョイ">エンジョイ</option>
+                        <option value="本気/ガチ">本気/ガチ</option>
+                    </select>
                 </div>
                 <div class="body">
                     <h2>募集テキスト</h2>
@@ -32,9 +45,7 @@
                 </div>
                 <input type="submit" value="投稿する"/>
             </form>
-            <div class="footer">
-                <a href="/">戻る</a>
-            </div>
+            
         </body>
     </html>
 </x-app-layout>

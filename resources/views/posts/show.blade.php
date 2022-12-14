@@ -13,7 +13,7 @@
         </head>
         <body>
             <div class="main">
-                <h2>募集文 : {{ $rec->body }}</h2/>
+                <h2>ゲーム : {{ $rec->game_title }}</h2/>
                 <h2>募集タイプ : {{ $rec->recruitment_type }}</h2/>
                 <h2>プレイスタイル : {{ $rec->playstyle }}</h2/>
             </div>

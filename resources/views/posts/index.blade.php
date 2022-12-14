@@ -15,7 +15,8 @@
             <div class='recruits'>
                 @foreach ($recruits as $recruit)
                     <div class='recruitment'>
-                        <h2 class='user'>ユーザーID : {{ $recruit->user_id}}</h2>
+                        <h2 class='game'>ゲーム : {{ $recruit->game_title}}</h2>
+                        <p class='user'>ユーザーID : {{ $recruit->user_id}}</p>
                         <p class='playstyle'>プレイスタイル : {{ $recruit->playstyle }}</p>
                         <p class='body'>投稿文 : {{ $recruit->body }}</p>
                         <p class='date'>投稿日時 : {{ $recruit->created_at}}</p>
