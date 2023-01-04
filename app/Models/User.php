@@ -21,7 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'profile_image',
+        'nickname',
+        'image_url',
         'age',
         'sex',
         'self_introduction'
@@ -49,5 +50,10 @@ class User extends Authenticatable
     public function recruits()   
     {
         return $this->hasMany(Recruit::class);  
+    }
+    
+    public function chats()   
+    {
+        return $this->hasMany(Chat::class);
     }
 }

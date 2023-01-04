@@ -14,10 +14,6 @@
             <h1>報告</h1>
             <form action="/reports" method="POST">
                 @csrf
-                <div class="title">
-                    <h2>報告対象のユーザーのID</h2>
-                    <input type="text" name="reports[target_user_id]" placeholder="報告相手のユーザーID"/>
-                </div>
                 <div class="type">
                     <h2>報告の種類</h2>
                     <select name="reports[report_type]">

@@ -6,7 +6,7 @@
             </a>
         </x-slot>
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}", enctype="multipart/form-data">
             @csrf
 
             <!-- Name -->
@@ -42,15 +42,15 @@
                 <x-text-input id="password_confirmation" class="block mt-1 w-full"
                                 type="password"
                                 name="password_confirmation" required />
-
+                                
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
             
-            <!-- Profile_image -->
+            <!-- NickName -->
             <div>
-                <x-input-label for="profile_image" :value="__('Profile_image')" />
-                <x-text-input id="profile_image" class="block mt-1 w-full" type="file" name="profile_image" accept="image/png, image/jpeg" :value="old('profile_image')" required autofocus />
-                <x-input-error :messages="$errors->get('profile_image')" class="mt-2" />
+                <x-input-label for="nickname" :value="__('NickName')" />
+                <x-text-input id="nickname" class="block mt-1 w-full" type="text" name="nickname" :value="old('nickname')" required autofocus />
+                <x-input-error :messages="$errors->get('nickname')" class="mt-2" />
             </div>
             
             <!-- Age -->
@@ -63,7 +63,10 @@
             <!-- Sex -->
             <div>
                 <x-input-label for="sex" :value="__('Sex')" />
-                <x-text-input id="sex" class="block mt-1 w-full" type="text" name="sex" :value="old('sex')" required autofocus />
+                <select name="sex">
+                    <option value="男">男性</option>
+                    <option value="女">女性</option>
+                </select>
                 <x-input-error :messages="$errors->get('sex')" class="mt-2" />
             </div>
             

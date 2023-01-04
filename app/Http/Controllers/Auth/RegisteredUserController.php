@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Cloudinary;
 
 class RegisteredUserController extends Controller
 {
@@ -37,6 +38,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'nickname' => ['required', 'string', 'max:10'],
             'age' => ['required', 'integer', 'max:256'],
             'sex' => ['required', 'string', 'min:1'],
             'self_introduction' => ['required', 'string', 'max:300'],
@@ -46,6 +48,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'nickname' => $request->nickname,
             'age' => $request->age,
             'sex' => $request->sex,
             'self_introduction' => $request->self_introduction,

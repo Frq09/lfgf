@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\CloudinaryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,14 +25,19 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::group(['middleware' => ['auth']], function(){
-    Route::get('/', [PostController::class, 'index'])->name('index');
+    Route::get('/index', [PostController::class, 'index'])->name('index');
     Route::get('/report', [PostController::class, 'report'])->name('report');
+    Route::get('/mypage', [PostController::class, 'mypage'])->name('mypage');
+    Route::get('/mypage/edit', [PostController::class, 'mypage_edit'])->name('mypage_edit');
     
     Route::get('/posts/recruit', [PostController::class, 'recruit']);
     Route::post('/recruits', [PostController::class, 'store']);
-    Route::post('/reports', [PostController::class, 'str_report']);
+    Route::post('/chat/{rec}', [ChatController::class, 'chat_store']);
+    Route::post('/reports', [ReportController::class, 'str_report']);
+    Route::post('/mypage_edit', [PostController::class, 'edit_store']);
     
     Route::get('/posts/{recruit}', [PostController::class ,'show']);
+    Route::get('/profile/{user}', [PostController::class ,'profile']);
     
     Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

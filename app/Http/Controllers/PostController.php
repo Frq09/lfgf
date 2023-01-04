@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Recruit;
 use App\Models\Report;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Cloudinary; 
 
 class PostController extends Controller
 {
@@ -29,21 +31,37 @@ class PostController extends Controller
         return view('posts/report');
     }
     
+    public function profile(User $user)
+    {
+        return view('posts/profile')->with(['user' => $user]);
+    }
+    
+    public function mypage(User $user)
+    {
+        return view('posts/mypage')->with(['users' => $user]);
+    }
+    
+    public function mypage_edit(User $user)
+    {
+        return view('posts/mypage_edit')->with(['users' => $user]);
+    }
+    
     public function store(Request $request, Recruit $recruit)
     {
         $input = $request['recruit'];
         $userId = Auth::id();
         $recruit->user_id = $userId;
         $recruit->fill($input)->save();
-        return redirect('/');
+        return redirect('/index');
     }
     
-    public function str_report(Request $request, Report $report)
+    public function edit_store(Request $request, User $user)
     {
-        $input = $request['reports'];
-        $userId = Auth::id();
-        $report->user_id = $userId;
-        $report->fill($input)->save();
-        return redirect('/');
+        $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        $input = $request['user'];
+        $input += ['image_url' => $image_url];
+        $user = Auth::user();
+        $user->fill($input)->save();
+        return redirect('/mypage/');
     }
 }
